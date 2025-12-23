@@ -9,11 +9,11 @@ from training import train
 from sampling import sample_2d_data
 
 # Setup
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = ScoreNetMLP().to(device)
 optimizer = optim.Adam(model.parameters(), lr=1e-3)
 dataset = MixtureOfGaussians(n_samples=10000)
-modelPath = "TestModel/ncsn/NCSN.pth"
+modelPath = "NCSN.pth"
 
 # Define Sigmas (Geometric Sequence)
 sigma_begin = 10.0
